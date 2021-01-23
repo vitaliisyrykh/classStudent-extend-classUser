@@ -5,8 +5,8 @@ class User {
     
   }
   set name(n){
-    if(typeof n ==='number'){
-      throw new TypeError('Data must be a numbers')
+    if(typeof n !=='string'){
+      throw new TypeError('Name must be a string')
     }
     this._name = n;
   }
@@ -14,8 +14,8 @@ class User {
     this._name
   }
   set surName(sn){
-    if(typeof sn ==='number'){
-      throw new TypeError('Data must be a numbers')
+    if(typeof sn !=='string'){
+      throw new TypeError('Name must be a string')
     }
     this._surName = sn;
   }
@@ -23,11 +23,7 @@ class User {
     return this._surName; 
   }
   
- /*  
-  set fullName(){
-    
-   
-  } */
+ 
   get fullName(){
     return this._fullName = `${this.name} ${this.surName}`
   }
@@ -40,7 +36,7 @@ class Student extends User{
   }
 
    set startedStudy(v){
-    if(typeof v  !== 'number'  || typeof v === 'Nan' ){
+    if(typeof v  !== 'number'){
       throw new TypeError('Введите число');
     }this._startedStudy = v;
   
@@ -52,12 +48,11 @@ class Student extends User{
 
   getCourse(){
     const date = new Date();
-    const yearNow = date.getFullYear();
-    const result = yearNow - this.startedStudy;
+    const result = date.getFullYear() - this.startedStudy;
 
-    if(result < 1 || result >5){
+    if(result < 0 || result >5){
       throw new RangeError('Вы ввели не правильный год обучения')
-    }return result;
+    }return result +1;
     
   }
 }
