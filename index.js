@@ -23,7 +23,9 @@ class User {
     return this._surName; 
   }
   
- 
+
+
+
   get fullName(){
     return this._fullName = `${this.name} ${this.surName}`
   }
